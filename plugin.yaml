@@ -1,0 +1,18 @@
+name: Form Admin
+version: 1.0.0
+description: Form Admin Plugin to manage user forms in Flextype Admin Panel.
+icon: fas fa-check-circle
+author:
+  name: Sergey Romanenko
+  email: support@flextype.org
+  url: http://flextype.org
+homepage: https://github.com/flextype-plugins/form-admin
+bugs: https://github.com/flextype-plugins/form-admin/issues
+license: MIT
+
+dependencies:
+  flextype: 0.9.7
+  plugins:
+    twig: 1.0.0
+    admin: 1.0.0
+    form: 1.0.0
