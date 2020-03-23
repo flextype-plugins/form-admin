@@ -21,7 +21,7 @@ class FieldsetsController extends Container
     {
         return $this->twig->render(
             $response,
-            'plugins/admin/templates/extends/fieldsets/index.html',
+            'plugins/form-admin/templates/extends/fieldsets/index.html',
             [
                 'menu_item' => 'fieldsets',
                 'fieldsets_list' => $this->fieldsets->fetchAll(),
@@ -46,7 +46,7 @@ class FieldsetsController extends Container
     {
         return $this->twig->render(
             $response,
-            'plugins/admin/templates/extends/fieldsets/add.html',
+            'plugins/form-admin/templates/extends/fieldsets/add.html',
             [
                 'menu_item' => 'fieldsets',
                 'fieldsets_list' => $this->fieldsets->fetchAll(),
@@ -110,7 +110,7 @@ class FieldsetsController extends Container
     {
         return $this->twig->render(
             $response,
-            'plugins/admin/templates/extends/fieldsets/edit.html',
+            'plugins/form-admin/templates/extends/fieldsets/edit.html',
             [
                 'menu_item' => 'fieldsets',
                 'id' => $request->getQueryParams()['id'],
@@ -155,7 +155,7 @@ class FieldsetsController extends Container
     {
         return $this->twig->render(
             $response,
-            'plugins/admin/templates/extends/fieldsets/rename.html',
+            'plugins/form-admin/templates/extends/fieldsets/rename.html',
             [
                 'menu_item' => 'fieldsets',
                 'id' => $request->getQueryParams()['id'],
