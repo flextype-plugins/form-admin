@@ -82,11 +82,13 @@ class FieldsetsController extends Container
             'sections' => [
                 'main' => [
                     'title' => 'admin_main',
-                    'fields' => [
-                        'title' => [
-                            'title' => 'admin_title',
-                            'type' => 'text',
-                            'size' => '12',
+                    'form' => [
+                        'fields' => [
+                            'title' => [
+                                'title' => 'admin_title',
+                                'type' => 'text',
+                                'size' => '12',
+                            ],
                         ],
                     ],
                 ],
