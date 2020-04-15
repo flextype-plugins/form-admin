@@ -4,9 +4,11 @@
 <a href="https://github.com/flextype-plugins/form-admin/releases"><img alt="Version" src="https://img.shields.io/github/release/flextype-plugins/form-admin.svg?label=version"></a> <a href="https://github.com/flextype-plugins/form-admin"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a> <a href="https://github.com/flextype-plugins/form-admin"><img src="https://img.shields.io/github/downloads/flextype-plugins/form-admin/total.svg?colorB=blue" alt="Total downloads"></a> <a href="https://github.com/flextype-plugins/form-admin"><img src="https://img.shields.io/badge/Flextype-0.9.7-green.svg" alt="Flextype"></a> <a href="https://crowdin.com/project/flextype-plugin-form-admin"><img src="https://d322cqt584bo4o.cloudfront.net/flextype-plugin-form-admin/localized.svg" alt="Crowdin"></a> <a href="https://scrutinizer-ci.com/g/flextype-plugins/form-admin?branch=master"><img src="https://img.shields.io/scrutinizer/g/flextype-plugins/form-admin.svg?branch=master" alt="Quality Score"></a> <a href=""><img src="https://img.shields.io/discord/423097982498635778.svg?logo=discord&colorB=728ADA&label=Discord%20Chat" alt="Discord"></a>
 </p>
 
+Form Admin Plugin to manage user forms in Flextype Admin Panel.
+
 ## DEPENDENCIES
 
-Form Admin Plugin to manage user forms in Flextype Admin Panel.
+The following dependencies need to be installed for Admin Panel Plugin.
 
 ### System
 
