@@ -7,7 +7,7 @@
                 <tr>
                     <th></th>
                     <th>
-                        {{ tr('admin_fieldset') }}
+                        {{ tr('form_admin_fieldset') }}
                     </th>
                     <th></th>
                 </tr>
@@ -36,18 +36,18 @@
                             <div id="dropdown-{{ id }}" class="dropdown">
                                 <a class="dropdown__item" href="{{ path_for('admin.fieldsets.edit') }}?id={{ id }}">
                                     <i class="icon icon--white mr-3">{{ icon('fas fa-edit') }}</i>
-                                    {{ tr('admin_edit') }}</a>
+                                    {{ tr('form_admin_edit') }}</a>
                                 <a class="dropdown__item" href="{{ path_for('admin.fieldsets.rename') }}?id={{ id }}">
                                     <i class="icon icon--white mr-3">{{ icon('fas fa-font') }}</i>
-                                    {{ tr('admin_rename') }}</a>
+                                    {{ tr('form_admin_rename') }}</a>
                                 <a class="dropdown__item" href="javascript:;" onclick="event.preventDefault();
                             document.getElementById('duplicate-fieldset-id-{{ id }}').submit();">
                                     <i class="icon icon--white mr-3">{{ icon('fas fa-copy') }}</i>
-                                    {{ tr('admin_duplicate') }}</a>
+                                    {{ tr('form_admin_duplicate') }}</a>
                                 <div class="dropdown__divider"></div>
                                 <a class="dropdown__item" href="javascript:;" onclick="event.preventDefault(); deleteFieldset('{{ id }}', {{ loop.index0 }});">
                                     <i class="icon icon--white mr-3">{{ icon('fas fa-trash-alt') }}</i>
-                                    {{ tr('admin_delete') }}</a>
+                                    {{ tr('form_admin_delete') }}</a>
                                 <form id="delete-fieldset-id-{{ id }}" action="{{ path_for('admin.fieldsets.deleteProcess') }}" method="POST" style="display: none;">
                                     {{ csrf() }}
                                     <input type="hidden" name="fieldset-id" value="{{ id }}">
@@ -66,8 +66,8 @@
         <div class="text-center flex justify-center items-center h-full">
             <div>
                 <i class="icon icon--4xl">{{ icon('far fa-list-alt') }}</i>
-                <h3 class="text-2xl pt-4 pb-8">{{ tr('admin_you_have_not_created_any_fieldsets_yet') }}</h3>
-                <a href="{{ path_for('admin.fieldsets.add') }}" class="button">{{ tr('admin_create_new_fieldset') }}</a>
+                <h3 class="text-2xl pt-4 pb-8">{{ tr('form_admin_you_have_not_created_any_fieldsets_yet') }}</h3>
+                <a href="{{ path_for('admin.fieldsets.add') }}" class="button">{{ tr('form_admin_create_new_fieldset') }}</a>
             </div>
         </div>
     {% endif %}
@@ -80,7 +80,7 @@
                 dropdown[row_num].hide();
             }
             Swal.fire(
-                {title: "{{ tr('admin_confirmation_required') }}", text: "{{ tr('admin_confirmation_required_for_fieldset_delete') }}", showCancelButton: true, confirmButtonText: "{{ tr('admin_yes_iam_sure')|raw }}", cancelButtonText: "{{ tr('admin_cancel') }}", reverseButtons: true}
+                {title: "{{ tr('form_admin_confirmation_required') }}", text: "{{ tr('form_admin_confirmation_required_for_fieldset_delete') }}", showCancelButton: true, confirmButtonText: "{{ tr('admin_yes_iam_sure')|raw }}", cancelButtonText: "{{ tr('admin_cancel') }}", reverseButtons: true}
             ).then((result) => {
                 if (result.value) {
                     document.getElementById('delete-fieldset-id-' + id).submit();

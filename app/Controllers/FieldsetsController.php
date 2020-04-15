@@ -28,14 +28,14 @@ class FieldsetsController extends Container
                 'links' =>  [
                     'fieldsets' => [
                         'link' => $this->router->pathFor('admin.fieldsets.index'),
-                        'title' => __('admin_fieldsets'),
+                        'title' => __('form_admin_fieldsets'),
                         'active' => true
                     ],
                 ],
                 'buttons' => [
                     'fieldsets_add' => [
                         'link' => $this->router->pathFor('admin.fieldsets.add'),
-                        'title' => __('admin_create_new_fieldset')
+                        'title' => __('form_admin_create_new_fieldset')
                     ]
                 ],
             ]
@@ -53,11 +53,11 @@ class FieldsetsController extends Container
                 'links' =>  [
                     'fieldsets' => [
                         'link' => $this->router->pathFor('admin.fieldsets.index'),
-                        'title' => __('admin_fieldsets'),
+                        'title' => __('form_admin_fieldsets'),
                     ],
                     'fieldsets_add' => [
                         'link' => $this->router->pathFor('admin.fieldsets.add'),
-                        'title' => __('admin_create_new_fieldset'),
+                        'title' => __('form_admin_create_new_fieldset'),
                         'active' => true
                     ],
                 ],
@@ -96,9 +96,9 @@ class FieldsetsController extends Container
         ];
 
         if ($this->fieldsets->create($id, $data)) {
-            $this->flash->addMessage('success', __('admin_message_fieldset_created'));
+            $this->flash->addMessage('success', __('form_admin_message_fieldset_created'));
         } else {
-            $this->flash->addMessage('error', __('admin_message_fieldset_was_not_created'));
+            $this->flash->addMessage('error', __('form_admin_message_fieldset_was_not_created'));
         }
 
         if (isset($post_data['create-and-edit'])) {
@@ -120,11 +120,11 @@ class FieldsetsController extends Container
                 'links' =>  [
                     'fieldsets' => [
                         'link' => $this->router->pathFor('admin.fieldsets.index'),
-                        'title' => __('admin_fieldsets'),
+                        'title' => __('form_admin_fieldsets'),
                     ],
                     'fieldsets_editor' => [
                         'link' => $this->router->pathFor('admin.fieldsets.edit') . '?id=' . $request->getQueryParams()['id'],
-                        'title' => __('admin_editor'),
+                        'title' => __('form_admin_editor'),
                         'active' => true
                     ],
                 ],
@@ -132,7 +132,7 @@ class FieldsetsController extends Container
                     'save_entry' => [
                         'type' => 'action',
                         'link' => 'javascript:;',
-                        'title' => __('admin_save')
+                        'title' => __('form_admin_save')
                     ],
                 ],
             ]
@@ -145,9 +145,9 @@ class FieldsetsController extends Container
         $data = $request->getParsedBody()['data'];
 
         if ($this->fieldsets->update($request->getParsedBody()['id'], $this->parser->decode($data, 'yaml'))) {
-            $this->flash->addMessage('success', __('admin_message_fieldset_saved'));
+            $this->flash->addMessage('success', __('form_admin_message_fieldset_saved'));
         } else {
-            $this->flash->addMessage('error', __('admin_message_fieldset_was_not_saved'));
+            $this->flash->addMessage('error', __('form_admin_message_fieldset_was_not_saved'));
         }
 
         return $response->withRedirect($this->router->pathFor('admin.fieldsets.edit') . '?id=' . $id);
@@ -164,11 +164,11 @@ class FieldsetsController extends Container
                 'links' =>  [
                     'fieldsets' => [
                         'link' => $this->router->pathFor('admin.fieldsets.index'),
-                        'title' => __('admin_fieldsets'),
+                        'title' => __('form_admin_fieldsets'),
                     ],
                     'fieldsets_rename' => [
                         'link' => $this->router->pathFor('admin.fieldsets.rename') . '?id=' . $request->getQueryParams()['id'],
-                        'title' => __('admin_rename'),
+                        'title' => __('form_admin_rename'),
                         'active' => true
                     ],
                 ],
@@ -179,9 +179,9 @@ class FieldsetsController extends Container
     public function renameProcess($request, $response)
     {
         if ($this->fieldsets->rename($request->getParsedBody()['fieldset-id-current'], $request->getParsedBody()['id'])) {
-            $this->flash->addMessage('success', __('admin_message_fieldset_renamed'));
+            $this->flash->addMessage('success', __('form_admin_message_fieldset_renamed'));
         } else {
-            $this->flash->addMessage('error', __('admin_message_fieldset_was_not_renamed'));
+            $this->flash->addMessage('error', __('form_admin_message_fieldset_was_not_renamed'));
         }
 
         return $response->withRedirect($this->router->pathFor('admin.fieldsets.index'));
@@ -190,9 +190,9 @@ class FieldsetsController extends Container
     public function deleteProcess($request, $response)
     {
         if ($this->fieldsets->delete($request->getParsedBody()['fieldset-id'])) {
-            $this->flash->addMessage('success', __('admin_message_fieldset_deleted'));
+            $this->flash->addMessage('success', __('form_admin_message_fieldset_deleted'));
         } else {
-            $this->flash->addMessage('error', __('admin_message_fieldset_was_not_deleted'));
+            $this->flash->addMessage('error', __('form_admin_message_fieldset_was_not_deleted'));
         }
 
         return $response->withRedirect($this->router->pathFor('admin.fieldsets.index'));
@@ -201,9 +201,9 @@ class FieldsetsController extends Container
     public function duplicateProcess($request, $response)
     {
         if ($this->fieldsets->copy($request->getParsedBody()['fieldset-id'], $request->getParsedBody()['fieldset-id'] . '-duplicate-' . date('Ymd_His'))) {
-            $this->flash->addMessage('success', __('admin_message_fieldset_duplicated'));
+            $this->flash->addMessage('success', __('form_admin_message_fieldset_duplicated'));
         } else {
-            $this->flash->addMessage('error', __('admin_message_fieldset_was_not_duplicated'));
+            $this->flash->addMessage('error', __('form_admin_message_fieldset_was_not_duplicated'));
         }
 
         return $response->withRedirect($this->router->pathFor('admin.fieldsets.index'));
