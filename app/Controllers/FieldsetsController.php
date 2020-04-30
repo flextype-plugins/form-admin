@@ -116,7 +116,7 @@ class FieldsetsController extends Container
             [
                 'menu_item' => 'fieldsets',
                 'id' => $request->getQueryParams()['id'],
-                'data' => $this->parser->encode($this->fieldsets->fetch($request->getQueryParams()['id']), 'yaml'),
+                'data' => $this->serializer->encode($this->fieldsets->fetch($request->getQueryParams()['id']), 'yaml'),
                 'links' =>  [
                     'fieldsets' => [
                         'link' => $this->router->pathFor('admin.fieldsets.index'),
@@ -144,7 +144,7 @@ class FieldsetsController extends Container
         $id   = $request->getParsedBody()['id'];
         $data = $request->getParsedBody()['data'];
 
-        if ($this->fieldsets->update($request->getParsedBody()['id'], $this->parser->decode($data, 'yaml'))) {
+        if ($this->fieldsets->update($request->getParsedBody()['id'], $this->serializer->decode($data, 'yaml'))) {
             $this->flash->addMessage('success', __('form_admin_message_fieldset_saved'));
         } else {
             $this->flash->addMessage('error', __('form_admin_message_fieldset_was_not_saved'));
