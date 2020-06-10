@@ -79,15 +79,17 @@ class FieldsetsController extends Container
             'default_field' => 'title',
             'icon' => $post_data['icon'],
             'hide' => (bool) $post_data['hide'],
-            'sections' => [
-                'main' => [
-                    'title' => 'admin_main',
-                    'form' => [
-                        'fields' => [
-                            'title' => [
-                                'title' => 'admin_title',
-                                'type' => 'text',
-                                'size' => '12',
+            'form' => [
+                'tabs' => [
+                    'main' => [
+                        'title' => 'admin_main',
+                        'form' => [
+                            'fields' => [
+                                'title' => [
+                                    'title' => 'admin_title',
+                                    'type' => 'text',
+                                    'size' => '12',
+                                ],
                             ],
                         ],
                     ],
