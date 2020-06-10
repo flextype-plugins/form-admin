@@ -17,4 +17,4 @@ $app->group('/' . $admin_route, function () use ($app) : void {
     $app->post('/fieldsets/duplicate', 'FieldsetsController:duplicateProcess')->setName('admin.fieldsets.duplicateProcess');
     $app->post('/fieldsets/delete', 'FieldsetsController:deleteProcess')->setName('admin.fieldsets.deleteProcess');
 
-})->add(new AdminPanelAuthMiddleware($flextype));
+})->add(new AdminPanelAuthMiddleware($flextype))->add('csrf');
