@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Flextype;
 
-$app->group('/' . $admin_route, function () use ($app) : void {
+$app->group('/' . $admin_route, function () use ($app, $flextype) : void {
 
     // FieldsetsController
     $app->get('/fieldsets', 'FieldsetsController:index')->setName('admin.fieldsets.index');
@@ -17,4 +17,8 @@ $app->group('/' . $admin_route, function () use ($app) : void {
     $app->post('/fieldsets/duplicate', 'FieldsetsController:duplicateProcess')->setName('admin.fieldsets.duplicateProcess');
     $app->post('/fieldsets/delete', 'FieldsetsController:deleteProcess')->setName('admin.fieldsets.deleteProcess');
 
-})->add(new AdminPanelAuthMiddleware($flextype))->add('csrf');
+})->add(new AclAccountIsUserLoggedInMiddleware(['container' => $flextype, 'redirect' => 'admin.accounts.login']))
+  ->add(new AclAccountsIsUserLoggedInRolesOneOfMiddleware(['container' => $flextype,
+                                                           'redirect' => ($flextype->acl->isUserLoggedIn() ? 'admin.accounts.no-access' : 'admin.accounts.login'),
+                                                           'roles' => 'admin']))
+  ->add('csrf');

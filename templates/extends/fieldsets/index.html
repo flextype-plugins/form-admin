@@ -9,6 +9,9 @@
                     <th>
                         {{ tr('form_admin_fieldset') }}
                     </th>
+                    <th>
+                        {{ tr('form_admin_fieldset_id') }}
+                    </th>
                     <th></th>
                 </tr>
             </thead>
@@ -19,7 +22,7 @@
                         {% set fieldset = serializer_decode(filesystem_read(fieldset_path), 'yaml') %}
                     {% endif %}
                     <tr>
-                        <td class="w-1 text-center{% if fieldset.hide %}opacity-50{% endif %}">
+                        <td class="w-1 text-center{% if fieldset.hide %} opacity-50{% endif %}">
                             {% if fieldset.icon %}
                                 <i class="icon">{{ icon(fieldset.icon) }}</i>
                             {% else %}
@@ -28,6 +31,9 @@
                         </td>
                         <td class="pl-0 {% if fieldset.hide %}opacity-50{% endif %}">
                             <a href="{{ path_for('admin.fieldsets.edit') }}?id={{ id }}">{{ title }}</a>
+                        </td>
+                        <td class="pl-0 {% if fieldset.hide %}opacity-50{% endif %}">
+                            {{ id }}
                         </td>
                         <td class="text-right">
                             <button type="button" class="js-dropdown-btn" data-dropdown="dropdown-{{ id }}">

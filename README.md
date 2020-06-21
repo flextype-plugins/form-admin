@@ -10,21 +10,21 @@ Form Admin Plugin to manage user forms in Flextype Admin Panel.
 
 The following dependencies need to be installed for Form Admin Plugin.
 
-### System
-
 | Item | Version | Download |
 |---|---|---|
 | [flextype](https://github.com/flextype/flextype) | 0.9.8 | [download](https://github.com/flextype/flextype/releases) |
 | [twig](https://github.com/flextype-plugins/twig) | >=1.0.0 | [download](https://github.com/flextype-plugins/twig/releases) |
 | [form](https://github.com/flextype-plugins/form) | >=1.0.0 | [download](https://github.com/flextype-plugins/form/releases) |
 | [admin](https://github.com/flextype-plugins/admin) | >=1.0.0 | [download](https://github.com/flextype-plugins/admin/releases) |
+| [accounts-admin](https://github.com/flextype-plugins/accounts-admin) | >=1.0.0 | [download](https://github.com/flextype-plugins/accounts-admin/releases) |
+| [acl](https://github.com/flextype-plugins/acl) | >=1.0.0 | [download](https://github.com/flextype-plugins/acl/releases) |
 | [jquery](https://github.com/flextype-plugins/jquery) | >=1.0.0 | [download](https://github.com/flextype-plugins/jquery/releases) |
 
 ## INSTALLATION
 
 1. Download & Install all required dependencies.
 2. Create new folder `/project/plugins/form-admin`
-3. Download Themes Admin Plugin and unzip plugin content to the folder `/project/plugins/form-admin`
+3. Download Form Admin Plugin and unzip plugin content to the folder `/project/plugins/form-admin`
 
 ## LICENSE
 [The MIT License (MIT)](https://github.com/flextype-plugins/form-admin/blob/master/LICENSE.txt)
