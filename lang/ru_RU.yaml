@@ -34,3 +34,4 @@ form_admin_message_fieldset_was_not_created: "Набор полей не был 
 form_admin_message_fieldset_was_not_renamed: "Набор полей не был переименован"
 form_admin_message_fieldset_was_not_deleted: "Набор полей не был удален"
 form_admin_message_fieldset_was_not_duplicated: "Набор полей не был дублирован"
+form_admin_fieldset_id: ID
