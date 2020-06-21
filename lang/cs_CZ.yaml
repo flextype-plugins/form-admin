@@ -34,3 +34,4 @@ form_admin_message_fieldset_was_not_created: "Fieldset was not created"
 form_admin_message_fieldset_was_not_renamed: "Fieldset was not renamed"
 form_admin_message_fieldset_was_not_deleted: "Fieldset was not deleted"
 form_admin_message_fieldset_was_not_duplicated: "Fieldset was not duplicated"
+form_admin_fieldset_id: ID
