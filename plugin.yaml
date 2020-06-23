@@ -1,5 +1,5 @@
 name: Form Admin
-version: 1.0.2
+version: 1.0.4
 description: Form Admin Plugin to manage user forms in Flextype Admin Panel.
 icon: fas fa-check-circle
 author:
@@ -14,5 +14,7 @@ dependencies:
   flextype: 0.9.8
   twig: '>=1.0.0'
   admin: '>=1.0.0'
+  accounts-admin: '>=1.0.0'
   form: '>=1.0.0'
   jquery: '>=1.0.0'
+  acl: '>=1.0.0'
