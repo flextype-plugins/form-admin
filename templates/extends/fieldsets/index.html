@@ -19,7 +19,7 @@
                 {% for id, title in fieldsets_list %}
                     {% set fieldset_path = PATH_PROJECT ~ '/fieldsets/' ~ id ~ '.yaml' %}
                     {% if filesystem_has(fieldset_path) %}
-                        {% set fieldset = serializer_decode(filesystem_read(fieldset_path), 'yaml') %}
+                        {% set fieldset = yaml_decode(filesystem_read(fieldset_path)) %}
                     {% endif %}
                     <tr>
                         <td class="w-1 text-center{% if fieldset.hide %} opacity-50{% endif %}">
