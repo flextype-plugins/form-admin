@@ -1,3 +1,10 @@
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/flextype-plugins/form-admin/compare/v1.0.3...v1.1.0) (2020-08-05)
+
+### Features
+
+* **core** update code base for new Flextype 0.9.9
+
 <a name="1.0.4"></a>
 # [1.0.4](https://github.com/flextype-plugins/form-admin/compare/v1.0.3...v1.0.4) (2020-06-23)
 

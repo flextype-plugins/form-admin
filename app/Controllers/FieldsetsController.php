@@ -2,11 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Flextype;
+namespace Flextype\Plugin\FormAdmin\Controllers;
 
-use Flextype\Component\Arr\Arr;
+use Flextype\Component\Arrays\Arrays;
 use function date;
 use function Flextype\Component\I18n\__;
+use Flextype\App\Foundation\Container;
 
 /**
  * @property twig $twig
@@ -70,8 +71,8 @@ class FieldsetsController extends Container
         // Get data from POST
         $post_data = $request->getParsedBody();
 
-        Arr::delete($post_data, 'csrf_name');
-        Arr::delete($post_data, 'csrf_value');
+        Arrays::delete($post_data, 'csrf_name');
+        Arrays::delete($post_data, 'csrf_value');
 
         $id   = $this->slugify->slugify($post_data['id']);
         $data = [
@@ -118,7 +119,7 @@ class FieldsetsController extends Container
             [
                 'menu_item' => 'fieldsets',
                 'id' => $request->getQueryParams()['id'],
-                'data' => $this->serializer->encode($this->fieldsets->fetch($request->getQueryParams()['id']), 'yaml'),
+                'data' => $this->yaml->encode($this->fieldsets->fetch($request->getQueryParams()['id'])),
                 'links' =>  [
                     'fieldsets' => [
                         'link' => $this->router->pathFor('admin.fieldsets.index'),
@@ -146,7 +147,7 @@ class FieldsetsController extends Container
         $id   = $request->getParsedBody()['id'];
         $data = $request->getParsedBody()['data'];
 
-        if ($this->fieldsets->update($request->getParsedBody()['id'], $this->serializer->decode($data, 'yaml'))) {
+        if ($this->fieldsets->update($request->getParsedBody()['id'], $this->yaml->decode($data))) {
             $this->flash->addMessage('success', __('form_admin_message_fieldset_saved'));
         } else {
             $this->flash->addMessage('error', __('form_admin_message_fieldset_was_not_saved'));
