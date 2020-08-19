@@ -7,35 +7,40 @@ namespace Flextype\Plugin\FormAdmin\Controllers;
 use Flextype\Component\Arrays\Arrays;
 use function date;
 use function Flextype\Component\I18n\__;
-use Flextype\App\Foundation\Container;
 
-/**
- * @property twig $twig
- * @property Fieldsets $fieldsets
- * @property Router $router
- * @property Slugify $slugify
- * @property Flash $flash
- */
-class FieldsetsController extends Container
+class FieldsetsController
 {
+    /**
+     * Flextype Application
+     */
+     protected $flextype;
+
+    /**
+     * __construct
+     */
+     public function __construct($flextype)
+     {
+         $this->flextype = $flextype;
+     }
+
     public function index($request, $response)
     {
-        return $this->twig->render(
+        return $this->flextype->container('twig')->render(
             $response,
             'plugins/form-admin/templates/extends/fieldsets/index.html',
             [
                 'menu_item' => 'fieldsets',
-                'fieldsets_list' => $this->fieldsets->fetchAll(),
+                'fieldsets_list' => $this->flextype->container('fieldsets')->fetchAll(),
                 'links' =>  [
                     'fieldsets' => [
-                        'link' => $this->router->pathFor('admin.fieldsets.index'),
+                        'link' => $this->flextype->container('router')->pathFor('admin.fieldsets.index'),
                         'title' => __('form_admin_fieldsets'),
                         'active' => true
                     ],
                 ],
                 'buttons' => [
                     'fieldsets_add' => [
-                        'link' => $this->router->pathFor('admin.fieldsets.add'),
+                        'link' => $this->flextype->container('router')->pathFor('admin.fieldsets.add'),
                         'title' => __('form_admin_create_new_fieldset')
                     ]
                 ],
@@ -45,19 +50,19 @@ class FieldsetsController extends Container
 
     public function add($request, $response)
     {
-        return $this->twig->render(
+        return $this->flextype->container('twig')->render(
             $response,
             'plugins/form-admin/templates/extends/fieldsets/add.html',
             [
                 'menu_item' => 'fieldsets',
-                'fieldsets_list' => $this->fieldsets->fetchAll(),
+                'fieldsets_list' => $this->flextype->container('fieldsets')->fetchAll(),
                 'links' =>  [
                     'fieldsets' => [
-                        'link' => $this->router->pathFor('admin.fieldsets.index'),
+                        'link' => $this->flextype->container('router')->pathFor('admin.fieldsets.index'),
                         'title' => __('form_admin_fieldsets'),
                     ],
                     'fieldsets_add' => [
-                        'link' => $this->router->pathFor('admin.fieldsets.add'),
+                        'link' => $this->flextype->container('router')->pathFor('admin.fieldsets.add'),
                         'title' => __('form_admin_create_new_fieldset'),
                         'active' => true
                     ],
@@ -74,7 +79,7 @@ class FieldsetsController extends Container
         Arrays::delete($post_data, 'csrf_name');
         Arrays::delete($post_data, 'csrf_value');
 
-        $id   = $this->slugify->slugify($post_data['id']);
+        $id   = $this->flextype->container('slugify')->slugify($post_data['id']);
         $data = [
             'title' => $post_data['title'],
             'default_field' => 'title',
@@ -98,35 +103,35 @@ class FieldsetsController extends Container
             ],
         ];
 
-        if ($this->fieldsets->create($id, $data)) {
-            $this->flash->addMessage('success', __('form_admin_message_fieldset_created'));
+        if ($this->flextype->container('fieldsets')->create($id, $data)) {
+            $this->flextype->container('flash')->addMessage('success', __('form_admin_message_fieldset_created'));
         } else {
-            $this->flash->addMessage('error', __('form_admin_message_fieldset_was_not_created'));
+            $this->flextype->container('flash')->addMessage('error', __('form_admin_message_fieldset_was_not_created'));
         }
 
         if (isset($post_data['create-and-edit'])) {
-            return $response->withRedirect($this->router->pathFor('admin.fieldsets.edit') . '?id=' . $id);
+            return $response->withRedirect($this->flextype->container('router')->pathFor('admin.fieldsets.edit') . '?id=' . $id);
         }
 
-        return $response->withRedirect($this->router->pathFor('admin.fieldsets.index'));
+        return $response->withRedirect($this->flextype->container('router')->pathFor('admin.fieldsets.index'));
     }
 
     public function edit($request, $response)
     {
-        return $this->twig->render(
+        return $this->flextype->container('twig')->render(
             $response,
             'plugins/form-admin/templates/extends/fieldsets/edit.html',
             [
                 'menu_item' => 'fieldsets',
                 'id' => $request->getQueryParams()['id'],
-                'data' => $this->yaml->encode($this->fieldsets->fetch($request->getQueryParams()['id'])),
+                'data' => $this->flextype->container('yaml')->encode($this->flextype->container('fieldsets')->fetch($request->getQueryParams()['id'])),
                 'links' =>  [
                     'fieldsets' => [
-                        'link' => $this->router->pathFor('admin.fieldsets.index'),
+                        'link' => $this->flextype->container('router')->pathFor('admin.fieldsets.index'),
                         'title' => __('form_admin_fieldsets'),
                     ],
                     'fieldsets_editor' => [
-                        'link' => $this->router->pathFor('admin.fieldsets.edit') . '?id=' . $request->getQueryParams()['id'],
+                        'link' => $this->flextype->container('router')->pathFor('admin.fieldsets.edit') . '?id=' . $request->getQueryParams()['id'],
                         'title' => __('form_admin_editor'),
                         'active' => true
                     ],
@@ -147,18 +152,18 @@ class FieldsetsController extends Container
         $id   = $request->getParsedBody()['id'];
         $data = $request->getParsedBody()['data'];
 
-        if ($this->fieldsets->update($request->getParsedBody()['id'], $this->yaml->decode($data))) {
-            $this->flash->addMessage('success', __('form_admin_message_fieldset_saved'));
+        if ($this->flextype->container('fieldsets')->update($request->getParsedBody()['id'], $this->flextype->container('yaml')->decode($data))) {
+            $this->flextype->container('flash')->addMessage('success', __('form_admin_message_fieldset_saved'));
         } else {
-            $this->flash->addMessage('error', __('form_admin_message_fieldset_was_not_saved'));
+            $this->flextype->container('flash')->addMessage('error', __('form_admin_message_fieldset_was_not_saved'));
         }
 
-        return $response->withRedirect($this->router->pathFor('admin.fieldsets.edit') . '?id=' . $id);
+        return $response->withRedirect($this->flextype->container('router')->pathFor('admin.fieldsets.edit') . '?id=' . $id);
     }
 
     public function rename($request, $response)
     {
-        return $this->twig->render(
+        return $this->flextype->container('twig')->render(
             $response,
             'plugins/form-admin/templates/extends/fieldsets/rename.html',
             [
@@ -166,11 +171,11 @@ class FieldsetsController extends Container
                 'id' => $request->getQueryParams()['id'],
                 'links' =>  [
                     'fieldsets' => [
-                        'link' => $this->router->pathFor('admin.fieldsets.index'),
+                        'link' => $this->flextype->container('router')->pathFor('admin.fieldsets.index'),
                         'title' => __('form_admin_fieldsets'),
                     ],
                     'fieldsets_rename' => [
-                        'link' => $this->router->pathFor('admin.fieldsets.rename') . '?id=' . $request->getQueryParams()['id'],
+                        'link' => $this->flextype->container('router')->pathFor('admin.fieldsets.rename') . '?id=' . $request->getQueryParams()['id'],
                         'title' => __('form_admin_rename'),
                         'active' => true
                     ],
@@ -181,34 +186,34 @@ class FieldsetsController extends Container
 
     public function renameProcess($request, $response)
     {
-        if ($this->fieldsets->rename($request->getParsedBody()['fieldset-id-current'], $request->getParsedBody()['id'])) {
-            $this->flash->addMessage('success', __('form_admin_message_fieldset_renamed'));
+        if ($this->flextype->container('fieldsets')->rename($request->getParsedBody()['fieldset-id-current'], $request->getParsedBody()['id'])) {
+            $this->flextype->container('flash')->addMessage('success', __('form_admin_message_fieldset_renamed'));
         } else {
-            $this->flash->addMessage('error', __('form_admin_message_fieldset_was_not_renamed'));
+            $this->flextype->container('flash')->addMessage('error', __('form_admin_message_fieldset_was_not_renamed'));
         }
 
-        return $response->withRedirect($this->router->pathFor('admin.fieldsets.index'));
+        return $response->withRedirect($this->flextype->container('router')->pathFor('admin.fieldsets.index'));
     }
 
     public function deleteProcess($request, $response)
     {
-        if ($this->fieldsets->delete($request->getParsedBody()['fieldset-id'])) {
-            $this->flash->addMessage('success', __('form_admin_message_fieldset_deleted'));
+        if ($this->flextype->container('fieldsets')->delete($request->getParsedBody()['fieldset-id'])) {
+            $this->flextype->container('flash')->addMessage('success', __('form_admin_message_fieldset_deleted'));
         } else {
-            $this->flash->addMessage('error', __('form_admin_message_fieldset_was_not_deleted'));
+            $this->flextype->container('flash')->addMessage('error', __('form_admin_message_fieldset_was_not_deleted'));
         }
 
-        return $response->withRedirect($this->router->pathFor('admin.fieldsets.index'));
+        return $response->withRedirect($this->flextype->container('router')->pathFor('admin.fieldsets.index'));
     }
 
     public function duplicateProcess($request, $response)
     {
-        if ($this->fieldsets->copy($request->getParsedBody()['fieldset-id'], $request->getParsedBody()['fieldset-id'] . '-duplicate-' . date('Ymd_His'))) {
-            $this->flash->addMessage('success', __('form_admin_message_fieldset_duplicated'));
+        if ($this->flextype->container('fieldsets')->copy($request->getParsedBody()['fieldset-id'], $request->getParsedBody()['fieldset-id'] . '-duplicate-' . date('Ymd_His'))) {
+            $this->flextype->container('flash')->addMessage('success', __('form_admin_message_fieldset_duplicated'));
         } else {
-            $this->flash->addMessage('error', __('form_admin_message_fieldset_was_not_duplicated'));
+            $this->flextype->container('flash')->addMessage('error', __('form_admin_message_fieldset_was_not_duplicated'));
         }
 
-        return $response->withRedirect($this->router->pathFor('admin.fieldsets.index'));
+        return $response->withRedirect($this->flextype->container('router')->pathFor('admin.fieldsets.index'));
     }
 }
