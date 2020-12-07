@@ -25,7 +25,7 @@ class FieldsetsController
             'plugins/form-admin/templates/extends/fieldsets/index.html',
             [
                 'menu_item' => 'fieldsets',
-                'fieldsets_list' => flextype('fieldsets')->fetchAll(),
+                'fieldsets_list' => flextype('fieldsets')->fetchCollection(),
                 'links' =>  [
                     'fieldsets' => [
                         'link' => flextype('router')->pathFor('admin.fieldsets.index'),
@@ -50,7 +50,7 @@ class FieldsetsController
             'plugins/form-admin/templates/extends/fieldsets/add.html',
             [
                 'menu_item' => 'fieldsets',
-                'fieldsets_list' => flextype('fieldsets')->fetchAll(),
+                'fieldsets_list' => flextype('fieldsets')->fetchCollection(),
                 'links' =>  [
                     'fieldsets' => [
                         'link' => flextype('router')->pathFor('admin.fieldsets.index'),
@@ -119,7 +119,7 @@ class FieldsetsController
             [
                 'menu_item' => 'fieldsets',
                 'id' => $request->getQueryParams()['id'],
-                'data' => flextype('yaml')->encode(flextype('fieldsets')->fetch($request->getQueryParams()['id'])),
+                'data' => flextype('yaml')->encode(flextype('fieldsets')->fetchSingle($request->getQueryParams()['id'])),
                 'links' =>  [
                     'fieldsets' => [
                         'link' => flextype('router')->pathFor('admin.fieldsets.index'),
