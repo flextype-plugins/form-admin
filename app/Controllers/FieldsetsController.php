@@ -119,7 +119,7 @@ class FieldsetsController
             [
                 'menu_item' => 'fieldsets',
                 'id' => $request->getQueryParams()['id'],
-                'data' => flextype('yaml')->encode(flextype('fieldsets')->fetchSingle($request->getQueryParams()['id'])),
+                'data' => flextype('serializers')->yaml()->encode(flextype('fieldsets')->fetchSingle($request->getQueryParams()['id'])),
                 'links' =>  [
                     'fieldsets' => [
                         'link' => flextype('router')->pathFor('admin.fieldsets.index'),
@@ -147,7 +147,7 @@ class FieldsetsController
         $id   = $request->getParsedBody()['id'];
         $data = $request->getParsedBody()['data'];
 
-        if (flextype('fieldsets')->update($request->getParsedBody()['id'], flextype('yaml')->decode($data))) {
+        if (flextype('fieldsets')->update($request->getParsedBody()['id'], flextype('serializers')->yaml()->decode($data))) {
             flextype('flash')->addMessage('success', __('form_admin_message_fieldset_saved'));
         } else {
             flextype('flash')->addMessage('error', __('form_admin_message_fieldset_was_not_saved'));
