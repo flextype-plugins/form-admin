@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace Flextype\Plugin\FormAdmin;
 
-use Flextype\Plugin\FormAdmin\Controllers\FieldsetsController;
+use Flextype\Plugin\FormAdmin\Controllers\FormAdminFieldsetsController;
 use Slim\Flash\Messages;
 use Flextype\Component\I18n\I18n;
 use function Flextype\Component\I18n\__;
@@ -19,7 +19,5 @@ use function Flextype\Component\I18n\__;
 // Add Admin Navigation
 flextype('registry')->set('plugins.admin.settings.navigation.extends.fieldsets', ['title' => __('form_admin_fieldsets'),'icon' => 'far fa-list-alt', 'link' => flextype('router')->pathFor('admin.fieldsets.index')]);
 
-// Add FieldsetsController
-flextype()->container()['FieldsetsController'] = static function () {
-    return new FieldsetsController();
-};
+// Add FormAdminFieldsetsController
+flextype()->container()['FormAdminFieldsetsController'] = fn() => new FormAdminFieldsetsController();

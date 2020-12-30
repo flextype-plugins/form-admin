@@ -2,4 +2,4 @@
 enabled: true
 
 # Form Admin plugin priority
-priority: 50
+priority: 90
