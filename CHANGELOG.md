@@ -1,3 +1,13 @@
+<a name="1.7.0"></a>
+# [1.7.0](https://github.com/flextype-plugins/form-admin/compare/v1.6.0...v1.7.0) (2020-01-03)
+
+### Features
+
+* **core** update code base for new Flextype 0.9.15
+* **core** add plugin.php file
+* **core** add FormAdminFieldsetsController.php file
+* **routes** improve controllers handling in routes for performance enhancements
+
 <a name="1.6.0"></a>
 # [1.6.0](https://github.com/flextype-plugins/form-admin/compare/v1.5.0...v1.6.0) (2020-12-30)
 
