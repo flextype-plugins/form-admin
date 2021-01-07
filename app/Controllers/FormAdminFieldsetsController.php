@@ -70,7 +70,8 @@ class FormAdminFieldsetsController
         $data = [
             'title' => $post_data['title'],
             'default_field' => 'title',
-            'icon' => $post_data['icon'],
+            'icon' => ['name' => $post_data['icon_name'],
+                       'set' => $post_data['icon_set']],
             'hide' => (bool) $post_data['hide'],
             'form' => [
                 'tabs' => [

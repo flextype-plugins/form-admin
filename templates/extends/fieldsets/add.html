@@ -18,11 +18,18 @@
                 <div class="flex row">
                     <div class="col w-full lg:w-6/12">
                         <div class="form-group">
-                            <label for="icon" class="form-control-title">{{ tr('admin_icon') }}</label>
-                            <input type="text" id="fieldsetIcon" name="icon" value="far fa-file-alt" class="form-control" required="required" data-parsley-minlength="1" data-parsley-error-message="{{ tr('form_admin_error_icon_empty_input') }}" data-parsley-required="true">
-                            <small>{{ tr('form_admin_help_text_for_fieldsets_icon', {':link': '<a href="https://fontawesome.com/icons?d=gallery&m=free" target="_blank">fontawesome</a>'})|raw }}</small>
+                            <label for="icon" class="form-control-title">{{ tr('admin_icon_name') }}</label>
+                            <input type="text" id="fieldsetIconName" name="icon_name" value="file-alt" class="form-control" required="required" data-parsley-minlength="1" data-parsley-error-message="{{ tr('form_admin_error_icon_empty_input') }}" data-parsley-required="true">
                         </div>
                     </div>
+                    <div class="col w-full lg:w-6/12">
+                        <div class="form-group">
+                            <label for="icon" class="form-control-title">{{ tr('admin_icon_set') }}</label>
+                            <input type="text" id="fieldsetIconSet" name="icon_set" value="fontawesome|solid" class="form-control" required="required" data-parsley-minlength="1" data-parsley-error-message="{{ tr('form_admin_error_icon_empty_input') }}" data-parsley-required="true">
+                        </div>
+                    </div>
+                </div>
+                <div class="flex row">
                     <div class="col w-full lg:w-6/12">
                         <div class="form-group">
                             <label for="icon" class="form-control-title">{{ tr('form_admin_hide') }}</label>
