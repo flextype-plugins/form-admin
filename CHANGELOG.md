@@ -1,3 +1,10 @@
+<a name="1.8.1"></a>
+# [1.8.1](https://github.com/flextype-plugins/form-admin/compare/v1.8.0...v1.8.1) (2021-01-07)
+
+### Bug Fixes
+
+* **FormAdminFieldsetsController** fix add process method and template.
+
 <a name="1.8.0"></a>
 # [1.8.0](https://github.com/flextype-plugins/form-admin/compare/v1.7.0...v1.8.0) (2021-01-07)
 
