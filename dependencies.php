@@ -16,4 +16,4 @@ use Flextype\Component\I18n\I18n;
 use function Flextype\Component\I18n\__;
 
 // Add Admin Navigation
-flextype('registry')->set('plugins.admin.settings.navigation.extends.fieldsets', ['title' => __('form_admin_fieldsets'),'icon' => 'far fa-list-alt', 'link' => flextype('router')->pathFor('admin.fieldsets.index')]);
+flextype('registry')->set('plugins.admin.settings.navigation.extends.fieldsets', ['title' => __('form_admin_fieldsets'), 'icon' => ['name' => 'list-alt', 'set' => 'fontawesome|solid'], 'link' => flextype('router')->pathFor('admin.fieldsets.index')]);
